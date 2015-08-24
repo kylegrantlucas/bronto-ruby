@@ -37,6 +37,10 @@ module Bronto
 
       resp = api(api_key).call(method.to_sym, message: message)
 
+      puts resp
+      puts resp.try(:to_s)
+      puts resp.body["#{method}_response".to_sym]
+
       @last_used = Time.now
 
       resp.body["#{method}_response".to_sym]
